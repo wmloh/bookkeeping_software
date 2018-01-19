@@ -411,6 +411,7 @@ def debit_stage():
         pygame.display.update()
         clock.tick(25)
 
+## Provides a GUI for the second transaction entry phase
 def credit_stage():
     global element_c
     global account_c
@@ -672,6 +673,9 @@ def credit_stage():
         pygame.display.update()
         clock.tick(25)
 
+## Constructs a functional button at (x,y) with sizes size_x, size_y labelled as text which has action as its identifier for a
+##    particular defined function. This button only allows numerical input by default but can accept words if word=True
+##    Key, lock, lock_size is a mechanism to allow using "Tab" key to select the next button
 def button_fill(x, y, size_x, size_y, text=None, action=None, text_size='small',key=0, lock=1, lock_size = 6, word=False):
     global value
     global tab
@@ -910,6 +914,9 @@ def button_fill(x, y, size_x, size_y, text=None, action=None, text_size='small',
     if text != None:
         text_to_button(text, black, x, y, size_x, size_y, text_size)
 
+
+## Constructs a functional button at (x,y) with sizes size_x, size_y labelled as text which has action as its identifier for a
+##    particular defined function.
 def button_ui(x, y, size_x, size_y, text = None, action=None, text_size = 'small',colour = black):
     global element_d
     global element_c
@@ -1165,6 +1172,9 @@ def button_ui(x, y, size_x, size_y, text = None, action=None, text_size = 'small
         if text != None:
             text_to_button(text,colour,x,y,size_x,size_y,text_size)
 
+
+## Constructs a functional button at (x,y) with sizes size_x, size_y labelled as text which has action as its identifier for a
+##    particular defined function. This button function is specially for the configuration panel.
 def button_confg(x, y, size_x, size_y, text = None, action=None, text_size = 'small',colour = black, bg_colour1 = None, bg_colour2 = None):
     global selector_confg
     global depreciation_account
@@ -1252,6 +1262,9 @@ def button_confg(x, y, size_x, size_y, text = None, action=None, text_size = 'sm
         if text != None:
             text_to_button(text, colour, x, y, size_x, size_y, text_size)
 
+
+## Constructs a display button at (x,y) that is specifically meant for display the inputted entries where index refers to the 
+##    nth entry of transaction_list
 def button_display(x, y, index):
     credit_element = transaction_list[index][0]
     credit_account = transaction_list[index][1]
@@ -1276,6 +1289,7 @@ def button_display(x, y, index):
     pygame.draw.line(gameDisplay, black, (x + 430, y), (x+430, y + 20), 2)
     pygame.draw.line(gameDisplay, black, (x + 430, y+20), (x + 450, y + 20), 2)
 
+## Provides a GUI for the third transaction entry phase
 def detailsScreen():
     global element_d
     global account_d
@@ -1323,6 +1337,7 @@ def detailsScreen():
         pygame.display.update()
         clock.tick(25)
 
+## Provides a GUI for the fourth transaction entry phase
 def transScreen():
     global element_d
     global element_c
@@ -1379,6 +1394,7 @@ def transScreen():
         pygame.display.update()
         clock.tick(25)
 
+## A button and graphics function meant to be attached to the transaction GUI
 def transpanel():
     pygame.draw.rect(gameDisplay,(20,25,50),[0,0,200,768])
     button_ui(25,35,150,49,"Transactions",action=None,text_size='medium',colour=white)
@@ -1388,6 +1404,7 @@ def transpanel():
     button_ui(25, 275, 150, 50, "Analysis", action="analysis_navi_from_main", text_size='medium',colour=white)
     button_ui(25,355,150,50, "Bank Reconciliation", action="bankrecon_navi_from_main", text_size="medium",colour=white)
 
+## Provides a GUI for the financial statements page
 def fin_statement():
 
     fin = True
@@ -1411,6 +1428,7 @@ def fin_statement():
         pygame.display.update()
         clock.tick(25)
 
+## A button and graphics function meant to be attached to the financial statement GUI
 def finpanel():
     pygame.draw.rect(gameDisplay, (20, 25, 50), [0, 0, 200, 768])
     button_ui(25, 35, 150, 49, "Transactions", action="main_navi_from_fin", text_size='medium', colour=white)
@@ -1421,6 +1439,7 @@ def finpanel():
     button_ui(25, 355, 150, 50, "Bank Reconciliation", action="bankrecon_navi_from_fin", text_size="medium",
               colour=white)
 
+## Provides a GUI for bank reconciliation 
 def bank_recon():
     global bankrecon
     bankrecon = True
@@ -1444,6 +1463,7 @@ def bank_recon():
         pygame.display.update()
         clock.tick(25)
 
+## A button and graphics function meant to be attached to the bank reconciliation GUI
 def bankrecon_panel():
     pygame.draw.rect(gameDisplay, (20, 25, 50), [0, 0, 200, 768])
     button_ui(25, 35, 150, 49, "Transactions", action="main_navi_from_bankrecon", text_size='medium', colour=white)
@@ -1453,6 +1473,7 @@ def bankrecon_panel():
     button_ui(25, 275, 150, 50, "Analysis", action="analysis_navi_from_bankrecon", text_size='medium', colour=white)
     button_ui(25, 355, 150, 50, "Bank Reconciliation", action=None, text_size="medium", colour=white)
 
+## Provides a GUI for Analysis
 def analysis_screen():
     global analysis
     analysis = True
@@ -1476,6 +1497,7 @@ def analysis_screen():
         pygame.display.update()
         clock.tick(25)
 
+## A button and graphics function meant to be attached to the analysis GUI
 def analysis_panel():
     pygame.draw.rect(gameDisplay, (20, 25, 50), [0, 0, 200, 768])
     button_ui(25, 35, 150, 49, "Transactions", action="main_navi_from_analysis", text_size='medium', colour=white)
@@ -1485,6 +1507,7 @@ def analysis_panel():
     button_ui(25, 275, 150, 50, "Analysis", action=None, text_size='medium', colour=white)
     button_ui(25, 355, 150, 50, "Bank Reconciliation", action="bankrecon_navi_from_analysis", text_size="medium", colour=white)
 
+## Provides a GUI for the saving screen
 def saveScreen():
     global tab
     global comp_name
@@ -1631,6 +1654,7 @@ def depreciationScreen():
         pygame.display.update((383,234,600,300))
         clock.tick(25)
 
+## Writes data based on the temporary variables into transaction_list
 def transaction():
     global line
     line += 1
@@ -1638,6 +1662,7 @@ def transaction():
     accounts_set.add(account_d)
     accounts_set.add(account_c)
 
+## Calls all necessary functions in order to edit the .xlsx file using data in transaction_list
 def save():
     f = open(dest_filename + ".csv", 'wb')
     csv.register_dialect('colons', delimiter = ':')
@@ -1661,6 +1686,7 @@ def save():
     except IOError:
         print("The file is currently open and cannot be edited.")
 
+## Creates the Journal Entry with a pre-defined format and inserts elements in the transaction_list
 def input_trnsct():
     global wb
     global ws1
@@ -1708,6 +1734,7 @@ def input_trnsct():
             ws1['C' + str(line_i * 4 + j)].number_format = '#,##0'
             ws1['D' + str(line_i * 4 + j)].number_format = '#,##0'
 
+## Creates the Ledger with a pre-defined format and organizes data from Journal Entry into Ledger
 def make_ledger():
     global ws2
     ws2 = wb.create_sheet(title = 'Ledger')
@@ -1785,6 +1812,7 @@ def make_ledger():
             ws2[str(get_column_letter(column+3)) + str(row)].number_format = '#,##0'
             ws2[str(get_column_letter(column+3)) + str(row)].border = left_border
 
+## Write MS Excel functions to sum all subtotals on Ledger
 def ledger_balance_count():
     for i in range(1, len(accounts)+1):
         debit_count = 0
@@ -1821,6 +1849,7 @@ def ledger_balance_count():
             ws2[str(get_column_letter(column+1)) + str(max(row_d+1,row_c+1))].font =Font(underline='doubleAccounting')
             sum_dict[cell_name] = [1,"='Ledger'!%s%d" % (get_column_letter(column+1), max(row_d+1,row_c+1))]
 
+## Creates the Unadjusted Trial Balance worksheet using data from the Ledger
 def unadj_trial_balance():
     ws3 = wb.create_sheet(title = 'Trial Balance')
     print("Accounts: " + str(accounts))
@@ -1942,6 +1971,7 @@ def unadj_trial_balance():
             ws3['C' + str(starting_row)].font = Font(bold=True, underline='doubleAccounting')
             ws3['C' + str(starting_row)].number_format = '#,##0'
 
+## Creates an income statement using data from the Unadjusted Trial Balance
 def income_statement():
     global net_income
 
@@ -2024,6 +2054,7 @@ def income_statement():
     net_income.append("='Income Statement'!C" + str(row_4 + 1))
     #print(net_income[1], net_income[2])
 
+## Creates a statement of retained earnings using data from the Unadjusted Trial Balance
 def statement_of_RE():
     ws5 = wb.create_sheet(title='Statement of Retained Earnings')
     ws5.merge_cells('A1:B1')
@@ -2073,6 +2104,7 @@ def statement_of_RE():
     if "Retained Earnings" in sum_dict:
         sum_dict["Retained Earnings"][1] = "='Statement of Retained Earnings'!B8"
 
+## Creates a balance sheet using data from the Unadjusted Trial Balance
 def balance_sheet():
     upper_border = Border(upper=Side(style='thick'))
 
@@ -2155,6 +2187,7 @@ def balance_sheet():
     ws6['C%i' % (row + 1)] = "=SUM(C%i:C%i)" % (starting_row, row)
     ws6['C%i' % (row + 1)].number_format = '#,##0'
 
+## Initialize the home screen as debit_stage() where the program will start
 debit_stage()
 
 
