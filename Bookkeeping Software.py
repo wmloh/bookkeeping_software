@@ -21,7 +21,6 @@ line = 0
 toggle = 0
 selector = True
 
-## Initializing the accounts of Assets, Liabilities and Shareholders' Equity
 all_asset = ['Cash','Account Receivable','Notes Receivable','Buildings','Land','Equipment',
  'Prepaid Expenses','Supplies','Inventory']
 all_liab = ['Account Payable','Notes Payable','Interest Payable','Taxes Payable',
