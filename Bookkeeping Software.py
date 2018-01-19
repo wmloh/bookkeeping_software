@@ -21,7 +21,7 @@ line = 0
 toggle = 0
 selector = True
 
-## Initialize
+## Initialize all working accounts of assets, liabilities and shareholders' equity which can be extended using "Other" function
 all_asset = ['Cash','Account Receivable','Notes Receivable','Buildings','Land','Equipment',
  'Prepaid Expenses','Supplies','Inventory']
 all_liab = ['Account Payable','Notes Payable','Interest Payable','Taxes Payable',
@@ -31,6 +31,7 @@ all_expenses = ['Cost of Goods Sold','Salary Expense', 'Utilities Expense', 'Ren
             'Insurance Expense']
 all_revenue = ['Sales Revenue', 'Service Revenue']
 
+## Initialize all default accounts of assets, liabilities and shareholders' equity
 asset = ['Cash','Account Receivable','Notes Receivable','Buildings','Land','Equipment',
  'Prepaid Expenses','Supplies','Inventory']
 liab = ['Account Payable','Notes Payable','Interest Payable','Taxes Payable',
@@ -50,6 +51,8 @@ accounts_set = set()
 
 dest_filename = 'Test2'
 
+
+## Default colour RGB values
 black = (0,0,0)
 white = (255,255,255)
 gray = (155,155,155)
@@ -64,6 +67,7 @@ dark_red = (120,0,0)
 
 pygame.init()
 
+## Display settings
 display_width = 1366
 display_height = 768
 gameDisplay = pygame.display.set_mode((display_width,display_height), pygame.FULLSCREEN)
@@ -73,11 +77,13 @@ clock = pygame.time.Clock()
 
 transparency = pygame.image.load("Transparency.png")
 
+## Font settings
 tinyfont = pygame.font.SysFont('georgia', 15)
 smallfont = pygame.font.SysFont('georgia', 16)
 medfont = pygame.font.SysFont('georgia', 18)
 largefont = pygame.font.SysFont('georgia', 26)
 
+## Initialize variables
 element_d = ''
 account_d = ''
 element_c = ''
@@ -97,6 +103,8 @@ dep_rs_cost = 0
 dep_time = 0
 dep_unit = 0
 
+## Provides textSurface for buttons
+## Str, (Int, Int, Int), Str -> textSurface, Rect
 def text_objects(text, color,size):
     if size == 'small':
         textSurface = smallfont.render(text, True, color)
@@ -108,6 +116,8 @@ def text_objects(text, color,size):
         textSurface = tinyfont.render(text, True, color)
     return textSurface, textSurface.get_rect()
 
+## Creates a display for buttons
+## Str, (Int, Int, Int) Int, Int, Int, Int, <Str, Str>
 def text_to_button(text, color, buttonx, buttony, buttonwidth, buttonheight,size = 'small', type = 'quad'):
     if type == 'quad':
         textSurf, textRect = text_objects(text, color, size)
@@ -118,6 +128,8 @@ def text_to_button(text, color, buttonx, buttony, buttonwidth, buttonheight,size
         textRect.center = ((buttonx, buttony))
         gameDisplay.blit(textSurf, textRect)
 
+## Returns the next empty row on MS Excel starting from column, row
+## Str, Int, Worksheet, <Int> -> Int
 def find_row(column, row, ws, space = 0):
     while not ws[column + str(row)].value == None:
         row += 1
@@ -126,6 +138,7 @@ def find_row(column, row, ws, space = 0):
     else:
         return find_row(column, row+1, ws, space = space - 1)
 
+## Provides GUI for the first transaction entry phase
 def debit_stage():
     global element_d
     global account_d
