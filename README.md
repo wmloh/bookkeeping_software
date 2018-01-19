@@ -4,7 +4,7 @@ A basic bookkeeping software that automates entering transactions into financial
 -------------------------------------------------------------------------------------------------------------------------------------------
 Author's note:
 
-This is my first original complete software! I embarked on this project a month and a half after learning my first programming language.
+This is my first original complete software (but have yet to go through extensive testing)! I embarked on this project a month and a half after learning my first programming language.
 Hence, there will be many hardcoded sections as well as poorly designed algorithms since I had no formal knowledge of computer science at
 that time. Fortunately, the functionality of the program is not affected by those. Through this project, I gained exposure to computer
 graphics, Openpyxl library, user interface and some data management. Also, I learnt domain-specific knowledge which is, in this case, Financial Accounting.
